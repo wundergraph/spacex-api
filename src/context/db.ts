@@ -1,8 +1,9 @@
 /*eslint-disable */
 import MongoClient from 'mongodb';
 
+const dbPass = process.env.DB_PASS
 const url =
-  'mongodb+srv://public:spacex@spacex-gcp-gpg0u.gcp.mongodb.net/spacex-api';
+  `mongodb+srv://wg:${dbPass}@spacex.loqbbog.mongodb.net/spacex-api`;
 
 export const getDB = async () => {
   const client = await MongoClient.connect(
