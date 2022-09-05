@@ -6,7 +6,7 @@ const dbPass = process.env.DB_PASS
 const uri = `mongodb+srv://wg:${dbPass}@spacex.loqbbog.mongodb.net/?retryWrites=true&w=majority`;
 
 export const getDB = async () => {
-  const client = new MongoClient(uri, { serverApi: ServerApiVersion.v1 });
+  const client = new MongoClient(uri, { serverApi: ServerApiVersion.v1, maxPoolSize: 20, minPoolSize: 10 });
 
   try {
     console.log('Connecting... to database')
