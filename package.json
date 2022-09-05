@@ -4,9 +4,11 @@
   "description": "Open Source GraphQL API for rocket, core, capsule, pad, and launch data",
   "main": "./src/index.ts",
   "scripts": {
-    "start": "ts-node ./src/index.ts",
+    "start": "node dist/index",
     "dev": "nodemon",
-    "generate": "gql-gen"
+    "generate": "gql-gen",
+    "clean": "rm -rf dist",
+    "build": "npm -s run clean && tsc"
   },
   "repository": {
     "type": "git",
