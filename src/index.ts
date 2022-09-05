@@ -4,7 +4,7 @@ import { getDB } from "./context/db";
 import getSchema from "./schema";
 import context from "./context";
 import graphql from "./servers/graphql";
-import rest from "./servers/rest";
+//import rest from "./servers/rest";
 
 (async () => {
   const port = process.env.PORT || 4000;
@@ -18,7 +18,7 @@ import rest from "./servers/rest";
   };
 
   graphql(app, config);
-  rest(app, config);
+  //rest(app, config);
 
   app.listen({ port }, () => {
     console.log(`🚀  Server ready http://localhost:${port}`);

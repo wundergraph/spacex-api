@@ -1,12 +1,7 @@
 import typeDefs from "./typeDefs";
 import resolvers from "./resolvers";
-import { rateLimit } from "../utils";
-import {
-  makeExecutableSchema,
-  makeRemoteExecutableSchema,
-  introspectSchema,
-  mergeSchemas
-} from "graphql-tools";
+import {rateLimit} from "../utils";
+import {makeExecutableSchema} from "graphql-tools";
 
 export default async () => {
   const localSchema = makeExecutableSchema({
@@ -17,9 +12,5 @@ export default async () => {
     }
   });
 
-  const schema = mergeSchemas({
-    schemas: [localSchema]
-  });
-
-  return schema;
+  return localSchema;
 };
