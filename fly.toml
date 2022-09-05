@@ -1,15 +1,13 @@
-# fly.toml file generated for spacex-api on 2022-09-05T11:33:26+02:00
+# fly.toml file generated for spacex-api on 2022-09-05T13:57:22+02:00
 
 app = "spacex-api"
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []
 
-#[build]
-#  builder = "heroku/buildpacks:20"
-
 [env]
-  PORT = "8080"
+  PORT = "4000"
+  API_URL = "https://spacex-api.fly.dev/"
 
 [experimental]
   allowed_public_ports = []
