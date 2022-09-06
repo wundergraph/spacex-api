@@ -50,8 +50,7 @@
 <script src="https://unpkg.com/graphiql/graphiql.min.js" type="application/javascript"></script>
 <script>
   function graphQLFetcher(graphQLParams) {
-    // TODO: get rid of hardcoded url
-    return fetch("https://spacex-api.fly.dev/graphql", {
+    return fetch("http://localhost:4000/graphql", {
       method: 'post',
       headers: {
         Accept: 'application/json',

@@ -18,6 +18,7 @@ COPY package.json yarn.lock ./
 RUN yarn install
 
 COPY build /app/build
+RUN sed -i "s/http:\/\/localhost:4000/https:\/\/spacex-api.fly.dev/g" /app/build/index.html
 COPY --from=build /app/dist /app/dist
 
 EXPOSE 4000
