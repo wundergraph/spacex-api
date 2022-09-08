@@ -7,7 +7,7 @@ processes = []
 
 [env]
   PORT = "4000"
-  API_URL = "https://spacex-api.fly.dev/"
+  PUBLIC_API_URL = "https://spacex-api.fly.dev/graphql"
 
 [experimental]
   allowed_public_ports = []
