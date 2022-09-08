@@ -25,14 +25,14 @@ import graphql from "./servers/graphql";
     console.log(`🚀  Server ready http://localhost:${port}`);
   });
 
-  const gracefulShutdown = () => {
-    console.log('SIGTERM signal received: closing HTTP server')
+  const gracefulShutdown = (signal: string) => {
+    console.log(`${signal} signal received: closing HTTP server`)
     server.close(() => {
       console.log('HTTP server closed')
       process.exit(0)
     })
   }
 
-  process.once('SIGTERM', gracefulShutdown)
-  process.once('SIGINT', gracefulShutdown)
+  process.once('SIGTERM', () => gracefulShutdown('SIGTERM'))
+  process.once('SIGINT', () => gracefulShutdown('SIGINT'))
 })();
