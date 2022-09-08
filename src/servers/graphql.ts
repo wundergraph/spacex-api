@@ -1,7 +1,7 @@
 import express from "express";
 import path from "path";
 import { ApolloServer } from "apollo-server-express";
-import fs from "fs/promises";
+import fs from "fs";
 import depthLimit from "graphql-depth-limit";
 import { createComplexityLimitRule } from "graphql-validation-complexity";
 
@@ -19,15 +19,12 @@ export default (app, { schema, context, publicApiUrl }) => {
   const buildPath = path.join(process.cwd(), "static");
   const period = 60 * 15; // 15 minutes
 
+  const data = fs.readFileSync(path.join(buildPath + "/index.html"), "utf8")
+
   // expose graphqli-explorer
   app.get("/graphql", (req, res) => {
-    fs.readFile(path.join(buildPath + "/index.html"), "utf8").then((data) => {
-      res.set('Cache-control', `public, max-age=${period}`)
-      res.send(data.replace("{{PUBLIC_API_URL}}", publicApiUrl));
-    }).catch((err) => {
-      console.error(err);
-      res.send("Internal Server Error");
-    })
+    res.set('Cache-control', `public, max-age=${period}`)
+    res.send(data.replace("{{PUBLIC_API_URL}}", publicApiUrl));
   });
 
   // graphql api by default
